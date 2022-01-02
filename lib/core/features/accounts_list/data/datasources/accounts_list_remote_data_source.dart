@@ -1,8 +1,9 @@
-import 'package:azure_test/core/features/accounts_list/domain/usecases/accounts_list.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../../../../shared/common/utils/utils.dart';
 import '../../../../../shared/utils/error/exceptions.dart';
 import '../../../../../shared/utils/http_client.dart';
+import '../../domain/usecases/accounts_list.dart';
 import '../models/accounts_list_model.dart';
 
 abstract class AccountsListRemoteDataSource {
@@ -34,7 +35,7 @@ class AccountsListRemoteDataSourceImpl implements AccountsListRemoteDataSource {
 
   getUrl(Params params) {
     String url =
-        "https://org2c9fce96.crm4.dynamics.com/api/data/v9.0/accounts?\$select=accountnumber,name,statecode,address1_stateorprovince";
+        UrlConstant.urlAccounts;
 
     if (params.search != null && params.search != '') {
       url = url +

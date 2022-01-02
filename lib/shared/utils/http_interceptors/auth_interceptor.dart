@@ -1,16 +1,15 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:azure_test/core/features/auth/presentation/bloc/auth/auth_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/features/auth/data/models/user_model.dart';
+import '../../../core/features/auth/presentation/bloc/auth/auth_bloc.dart';
 import '../../../injection_container.dart';
 import '../../common/common.dart';
-import '../http_client.dart' as http_client;
 
 class AuthInterceptor extends Interceptor {
   final Dio dio;
@@ -35,11 +34,11 @@ class AuthInterceptor extends Interceptor {
         await Dio(BaseOptions(contentType: Headers.formUrlEncodedContentType))
             .post("https://login.microsoftonline.com/common/oauth2/token",
                 data: {
-              'client_id': '527744d2-f67d-4e42-aa67-b11a3b205234',
-              'username': 'app@job1221.onmicrosoft.com',
-              'password': 'RentReady21!',
-              'grant_type': 'refresh_token',
-              'resource': 'https://org2c9fce96.crm4.dynamics.com',
+              'client_id': UrlConstant.client_id,
+              'username': UrlConstant.username,
+              'password': UrlConstant.password,
+              'grant_type': UrlConstant.grant_type,
+              'resource': UrlConstant.resource,
               'refresh_token': user.refresh_token
             }).then((response) async {
           print(response.data);
@@ -60,17 +59,6 @@ class AuthInterceptor extends Interceptor {
       options.headers[HttpHeaders.contentTypeHeader] =
           Headers.formUrlEncodedContentType;
     }
-
-    options.headers['Access-Control-Allow-Origin'] = '*';
-    options.headers['Cross-Origin-Resource-Policy'] = 'cross-origin';
-    options.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS';
-
-    options.headers['Access-Control-Allow-Headers'] =
-        'custId, appId, Origin, Content-Type, Cookie, X-CSRF-TOKEN, Accept, Authorization, X-XSRF-TOKEN, Access-Control-Allow-Origin';
-    options.headers['Access-Control-Expose-Headers'] =
-        'Authorization, authenticated';
-    options.headers['Access-Control-Max-Age'] = '1728000';
-    options.headers['Access-Control-Allow-Credentials'] = 'true';
 
     return options;
   }

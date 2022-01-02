@@ -1,8 +1,8 @@
-import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../../shared/common/utils/utils.dart';
 import '../../../../../shared/utils/error/exceptions.dart';
 import '../../../../../shared/utils/http_client.dart';
 import '../models/login_model.dart';
@@ -32,17 +32,12 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
 
   Future<UserModel> login(LoginModel data) async {
     final response = await client.dio
-        .post('https://login.microsoftonline.com/common/oauth2/token', data: {
-      'client_id': '527744d2-f67d-4e42-aa67-b11a3b205234',
-      'username': 'app@job1221.onmicrosoft.com',
-      'password': 'RentReady21!',
-      'grant_type': 'password',
-      'resource': 'https://org2c9fce96.crm4.dynamics.com'
-      // 'client_id': '9c241518-2f9d-4c6f-a0c8-da7d525cac83',
-      // 'username': 'AkramLEBCIR@itsynergy210.onmicrosoft.com',
-      // 'password': 'google12G\$',
-      // 'grant_type': 'password',
-      // 'resource': 'https://org95275b41.crm4.dynamics.com'
+        .post(UrlConstant.urlAuth, data: {
+      'client_id': UrlConstant.client_id,
+      'username': data.mail,
+      'password': data.password,
+      'grant_type': UrlConstant.grant_type,
+      'resource': UrlConstant.resource
     });
 
     if (response.statusCode == 200) {

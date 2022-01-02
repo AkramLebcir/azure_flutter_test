@@ -1,7 +1,4 @@
-import 'dart:io';
 
-import 'package:dio/adapter.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,8 +19,8 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   void initState() {
-    _phoneController.text = "akramlebcir@gmail.com";
-    _passwordController.text = "Azerty@123";
+    _phoneController.text = UrlConstant.username;
+    _passwordController.text = UrlConstant.password;
     super.initState();
   }
 

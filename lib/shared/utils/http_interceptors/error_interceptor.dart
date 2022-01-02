@@ -1,12 +1,10 @@
 import 'dart:developer';
 
-import 'package:azure_test/core/features/auth/presentation/bloc/auth/auth_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../core/features/auth/presentation/bloc/auth/auth_bloc.dart';
 import '../../../injection_container.dart';
-import '../../common/common.dart';
 
 class ErrorInterceptor extends Interceptor implements DioError {
   @override
@@ -47,7 +45,7 @@ class ErrorInterceptor extends Interceptor implements DioError {
             // SharedPreferences preferences =
             //     await SharedPreferences.getInstance();
             // await preferences.remove('user');
-            inject<Navigation>().navigateTo("/");
+            // inject<Navigation>().navigateTo("/");
           }
           if (err.response.statusCode == 403) {
             err.error = 'Unauthorized';
@@ -56,7 +54,7 @@ class ErrorInterceptor extends Interceptor implements DioError {
             // SharedPreferences preferences =
             //     await SharedPreferences.getInstance();
             // await preferences.remove('user');
-            inject<Navigation>().navigateTo("/");
+            // inject<Navigation>().navigateTo("/");
           }
         } else {
           err.error =
