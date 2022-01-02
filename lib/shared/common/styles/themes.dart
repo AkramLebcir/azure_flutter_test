@@ -7,7 +7,7 @@ class Themes {
   static ThemeData lightTheme = ThemeData(
     fontFamily: 'Roboto',
     backgroundColor: ColorPalettes.lightBG,
-    primaryColor: ColorPalettes.greyBg,
+    primaryColor: ColorPalettes.grey,
     accentColor: ColorPalettes.lightAccent,
     cursorColor: ColorPalettes.lightAccent,
     dividerColor: ColorPalettes.darkBG,
