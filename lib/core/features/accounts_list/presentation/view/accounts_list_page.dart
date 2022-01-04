@@ -97,7 +97,11 @@ class _AccountsListPageState extends State<AccountsListPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: InkWell(
                       onTap: () async {
+<<<<<<< HEAD
                         await showDialog<bool>(
+=======
+                        bool returnDialog = await showDialog<bool>(
+>>>>>>> 96e7aae7fcc45b10d1a3a58b0540d845777cd9b4
                           context: context,
                           builder: (contextDialog) {
                             return FilterDialog();

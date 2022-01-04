@@ -9,7 +9,6 @@ class Themes {
     backgroundColor: ColorPalettes.lightBG,
     primaryColor: ColorPalettes.grey,
     accentColor: ColorPalettes.lightAccent,
-    cursorColor: ColorPalettes.lightAccent,
     dividerColor: ColorPalettes.darkBG,
     scaffoldBackgroundColor: ColorPalettes.lightBG,
     appBarTheme: AppBarTheme(
@@ -31,7 +30,6 @@ class Themes {
     accentColor: ColorPalettes.darkAccent,
     dividerColor: ColorPalettes.lightPrimary,
     scaffoldBackgroundColor: ColorPalettes.darkBG,
-    cursorColor: ColorPalettes.darkAccent,
     appBarTheme: AppBarTheme(
       color: ColorPalettes.darkPrimary,
       // backgroundColor: ColorPalettes.darkBG,
