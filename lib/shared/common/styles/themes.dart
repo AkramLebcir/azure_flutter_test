@@ -7,16 +7,16 @@ class Themes {
   static ThemeData lightTheme = ThemeData(
     fontFamily: 'Roboto',
     backgroundColor: ColorPalettes.lightBG,
-    primaryColor: ColorPalettes.greyBg,
+    primaryColor: ColorPalettes.grey,
     accentColor: ColorPalettes.lightAccent,
     cursorColor: ColorPalettes.lightAccent,
     dividerColor: ColorPalettes.darkBG,
     scaffoldBackgroundColor: ColorPalettes.lightBG,
     appBarTheme: AppBarTheme(
-      // backgroundColor: ColorPalettes.lightBG,
+      backgroundColor: ColorPalettes.lightPrimary,
       textTheme: TextTheme(
         headline6: TextStyle(
-          color: ColorPalettes.darkBG,
+          color: ColorPalettes.lightPrimary,
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
         ),

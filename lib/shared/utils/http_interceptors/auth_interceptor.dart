@@ -76,7 +76,7 @@ class AuthInterceptor extends Interceptor {
     await EasyLoading.dismiss();
     if (err.response?.statusCode == 401) {
       inject<AuthBloc>().add(UserLoggedOut());
-      inject<Navigation>().navigateTo("/");
+      // inject<Navigation>().navigateTo("/");
     }
     return super.onError(err);
   }

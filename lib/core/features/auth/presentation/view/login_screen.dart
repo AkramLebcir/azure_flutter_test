@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -79,12 +78,7 @@ class _LoginFormState extends State<LoginForm> {
           const SizedBox(
             height: 31,
           ),
-          RaisedButton(
-              color: ColorPalettes.lightAccent,
-              textColor: Colors.white,
-              padding: const EdgeInsets.all(16),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0)),
+          ElevatedButton(
               child:
                   Text("login", style: Theme.of(context).textTheme.bodyText1),
               onPressed: () async {

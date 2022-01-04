@@ -8,26 +8,36 @@ import 'http_interceptors/error_interceptor.dart';
 
 // FIXME: Use a legit dependency injector instead of a Singleton
 class HttpClient {
-  HttpClient();
-  Dio _dio;
+  HttpClient._internal();
 
-  Dio get dio {
-    if (_dio == null) {
-      _dio = Dio(BaseOptions(baseUrl: ''));
+  static final _singleton = HttpClient._internal();
 
-      dio.interceptors..add(AuthInterceptor(dio))..add(ErrorInterceptor());
+  factory HttpClient() => _singleton;
 
-      if (kDebugMode) {
-        dio.interceptors.add(
-          PrettyDioLogger(
-            requestHeader: false,
-            requestBody: true,
-            responseHeader: false,
-            responseBody: true,
-          ),
-        );
-      }
+  final dio = createDio();
+
+  Dio init() {
+    Dio dio = Dio(BaseOptions(baseUrl: ''));
+
+    // dio.interceptors..add(AuthInterceptor(dio))..add(ErrorInterceptor());
+    return dio;
+  }
+
+  static Dio createDio() {
+    var dio = Dio(BaseOptions(baseUrl: ''));
+
+    dio.interceptors..add(AuthInterceptor(dio))..add(ErrorInterceptor());
+
+    if (kDebugMode) {
+      dio.interceptors.add(
+        PrettyDioLogger(
+          requestHeader: false,
+          requestBody: true,
+          responseHeader: false,
+          responseBody: true,
+        ),
+      );
     }
-    return _dio;
+    return dio;
   }
 }

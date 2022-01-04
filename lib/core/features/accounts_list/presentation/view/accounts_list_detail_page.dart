@@ -15,7 +15,8 @@ class AccountsListDetailPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorPalettes.lightBGwhiteBar,
       appBar: AppBar(
-        title: Text(''),
+        title: Text(this.accountsListModel.name ?? 'Detail'),
+        centerTitle: true,
       ),
       body: Container(
           width: max(70.h, 400),

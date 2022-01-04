@@ -6,7 +6,8 @@ class NoInternetWidget extends StatelessWidget {
   final String message;
   final Function onPressed;
 
-  const NoInternetWidget({Key key, @required this.message, @required this.onPressed})
+  const NoInternetWidget(
+      {Key key, @required this.message, @required this.onPressed})
       : super(key: key);
 
   @override
@@ -23,12 +24,9 @@ class NoInternetWidget extends StatelessWidget {
           ),
         ),
         SizedBox(height: Sizes.dp10(context)),
-        RaisedButton.icon(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(Sizes.dp10(context)),
-          ),
+        ElevatedButton.icon(
           icon: Icon(Icons.wifi),
-          onPressed: (){
+          onPressed: () {
             onPressed();
           },
           label: Text('Reload'),

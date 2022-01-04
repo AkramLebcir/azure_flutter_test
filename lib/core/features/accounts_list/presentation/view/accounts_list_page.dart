@@ -1,18 +1,18 @@
 import 'dart:math';
 
-import 'package:azure_test/core/features/accounts_list/presentation/cubit/view/view_cubit.dart';
-import 'package:azure_test/core/features/accounts_list/presentation/view/accounts_list_detail_page.dart';
-import 'package:azure_test/core/features/accounts_list/presentation/widgets/item_account_card_widget.dart';
-import 'package:azure_test/shared/common/styles/styles.dart';
-import 'package:azure_test/shared/widget/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/src/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import '../../../../../shared/common/styles/styles.dart';
+import '../../../../../shared/widget/widget.dart';
 import '../../../auth/presentation/bloc/auth/auth_bloc.dart';
 import '../bloc/accounts_list_bloc.dart';
+import '../cubit/view/view_cubit.dart';
+import '../widgets/item_account_card_widget.dart';
 import '../widgets/item_account_widget.dart';
+import 'accounts_list_detail_page.dart';
 import 'filter_dialog.dart';
 
 class AccountsListPage extends StatefulWidget {
@@ -78,8 +78,14 @@ class _AccountsListPageState extends State<AccountsListPage> {
                     child: TextField(
                       controller: _controller,
                       decoration: InputDecoration(
-                        labelText: 'Search',
-                      ),
+                          labelText: 'Search',
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.search,
+                              color: ColorPalettes.black,
+                            ),
+                          )),
                       onChanged: (value) {
                         context
                             .read<AccountsListBloc>()
@@ -91,13 +97,13 @@ class _AccountsListPageState extends State<AccountsListPage> {
                     padding: const EdgeInsets.all(8.0),
                     child: InkWell(
                       onTap: () async {
-                        bool xx = await showDialog<bool>(
+                        await showDialog<bool>(
                           context: context,
                           builder: (contextDialog) {
                             return FilterDialog();
                           },
                         );
-                        print(xx);
+                        this._controller.text = '';
                       },
                       child: Row(
                         children: [
